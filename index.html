@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test HTML Page</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            overflow: visible;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        .form-container input, .form-container textarea {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+        .toggle-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .chatbox-iframe {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 400px;
+            height: 600px;
+            border: none;
+            display: none; /* Initially hidden */
+            z-index: 999;
+            background: gray;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Test HTML Page</h1>
+    <p>This is a simple HTML page for testing purposes. It includes various HTML elements like headings, paragraphs, lists, tables, forms, and links.</p>
+
+    <h2>HTML Elements</h2>
+    <p>HTML is the standard markup language for creating web pages. Here are some common elements used in HTML:</p>
+    
+    <h3>Lists</h3>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+
+    <h3>Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Occupation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>30</td>
+                <td>Web Developer</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>25</td>
+                <td>Graphic Designer</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Form</h3>
+    <div class="form-container">
+        <form action="submit_form.html" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <h3>Links</h3>
+    <p>Here is a link to an external website:</p>
+    <a href="https://www.example.com" target="_blank">Visit Example.com</a>
+
+    <p>This page is a simple example and can be extended to include more complex features as needed.</p>
+
+    <!-- Toggle Button for the iframe -->
+    <button class="toggle-button" id="toggleButton" onclick="toggleIframe()">💬 Toggle Chat</button>
+
+    <!-- The chatbox iframe -->
+    <iframe class="chatbox-iframe" id="chatboxIframe" src="https://666fab0aa29f4e2c397ee0c5--teal-cajeta-14aa62.netlify.app/"></iframe>
+
+    <script>
+        function toggleIframe() {
+            const chatboxIframe = document.getElementById('chatboxIframe');
+            if (chatboxIframe.style.display === 'none' || chatboxIframe.style.display === '') {
+                chatboxIframe.style.display = 'block';
+            } else {
+                chatboxIframe.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
+
