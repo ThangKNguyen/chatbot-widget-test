@@ -3,155 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test HTML Page</title>
+    <title>My Simple HTML Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            overflow: visible;
-        }
-        h1, h2, h3 {
+            background-color: #f0f0f0;
             color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
         }
-        p {
-            font-size: 1.2em;
+        a {
+            color: #0066cc;
+            text-decoration: none;
         }
-        ul {
-            list-style-type: square;
-            padding-left: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .form-container {
-            margin-top: 20px;
-        }
-        .form-container input, .form-container textarea {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-        }
-        .iframe-container {
-            position: fixed;  /* Change to fixed position */
-            bottom: 0;        /* Align to the bottom of the viewport */
-            right: 0;         /* Align to the right of the viewport */
-            width: 100px;     /* Width of the iframe */
-            height: 70px;     /* Height of the iframe */
-            margin: 20px;     /* Optional: Adds some margin from the edges */
-            z-index: 1000;    /* Ensure it stays on top */
-        }
-        .iframe-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        .chatboxIframe{
-            background-color: transparent;
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Test HTML Page</h1>
-    <p>This is a simple HTML page for testing purposes. It includes various HTML elements like headings, paragraphs, lists, tables, forms, and links.</p>
+    <h1>Welcome to My Simple HTML Page</h1>
+    <p>This is a paragraph of text that gives more information about the content of the page. Feel free to edit this text and customize it as you like!</p>
+    <p>For more information, visit <a href="https://www.example.com" target="_blank">Example.com</a>.</p>
 
-    <h2>HTML Elements</h2>
-    <p>HTML is the standard markup language for creating web pages. Here are some common elements used in HTML:</p>
+    <!-- This is the chatbox -->
+    <iframe id="chatboxIframe" src="https://6675bc09edf85bc978ad5bcf--quiet-syrniki-513d09.netlify.app/" 
+    width="380" height="530" style="position: absolute; margin-left: 10px; margin-bottom: 10px; bottom: 0; right: 0; border: none; background-color: transparent; display: none;"></iframe>
+
+    <!-- This is the button iframe -->
+    <iframe src="https://6675bbbad230f5bb3200e614--extraordinary-moonbeam-f4e2bd.netlify.app/" 
+    width="90" height="90" style="position: absolute; bottom: 0; right: 0; border: none; background-color: transparent;"></iframe>
     
-    <h3>Lists</h3>
-    <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-    </ul>
-
-    <h3>Table</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Occupation</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>John Doe</td>
-                <td>30</td>
-                <td>Web Developer</td>
-            </tr>
-            <tr>
-                <td>Jane Smith</td>
-                <td>25</td>
-                <td>Graphic Designer</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>Form</h3>
-    <div class="form-container">
-        <form action="submit_form.html" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-
-    <h3>Links</h3>
-    <p>Here is a link to an external website:</p>
-    <a href="https://www.example.com" target="_blank">Visit Example.com</a>
-
-    <p>This page is a simple example and can be extended to include more complex features as needed.</p>
-
-    <!-- Iframe container with overlay for capturing clicks -->
-    <div class="iframe-container">
-        <iframe class="toggle-button" id="toggleButton" src="https://6675bbbad230f5bb3200e614--extraordinary-moonbeam-f4e2bd.netlify.app/" 
-            style="background: gold absolute; bottom: 0; right: 0; width: 100px; height: 100px; border: none;"></iframe>
-        <div class="iframe-overlay" onclick="handleIframeClick()"></div>
-    </div>
-
-
-    <iframe class="chatboxIframe" id="chatboxIframe" src="https://6675bc09edf85bc978ad5bcf--quiet-syrniki-513d09.netlify.app/" 
-     width="380" height="530" style="position: absolute; bottom: 0; right: 0; border: none; background-color: transparent;"></iframe>
+    <!-- Transparent overlay to capture clicks -->
+    <div id="iframeButtonOverlay" style="position: absolute; bottom: 0; right: 0; width: 90px; height: 90px; background-color: transparent; z-index: 10; cursor: pointer;"></div>
 
 
     <script>
-        function handleIframeClick() {
+        function toggleChatbox() {
             const chatboxIframe = document.getElementById('chatboxIframe');
+            // Check initial display state and toggle accordingly
             if (chatboxIframe.style.display === 'none' || chatboxIframe.style.display === '') {
                 chatboxIframe.style.display = 'block';
             } else {
                 chatboxIframe.style.display = 'none';
             }
         }
+        document.getElementById('iframeButtonOverlay').addEventListener('click', toggleChatbox);
     </script>
 </body>
 </html>
+
+
+
 
 
 
